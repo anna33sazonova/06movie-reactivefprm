@@ -1,0 +1,41 @@
+<form [formGroup]="searchMovieForm" (ngSubmit)="searchMovieForm.valid && onSubmit()" novalidate>
+    <div formGroupName="movie">
+
+        <div [hidden]="!searchMovieForm.get('movie')?.errors?.['fieldRequired']">{{searchMovieForm.get('movie')?.errors?.['fieldRequired'].rules}}</div>
+        <label for="id"> Identifiant
+            <input type="text" formControlName="id">
+
+        </label>
+        <label for="title"> Title
+            <input type="text" formControlName="title">
+        </label>
+    </div>
+    <div>
+        <label for="type"> Type
+            <select formControlName="type">
+                <option *ngFor="let type of types" [ngValue]="type.id">{{type.name}}</option>
+            </select></label>
+    </div>
+    <div>
+        <label for="release">Year of release
+            <input formControlName="release" type="number">
+            <div *ngIf="searchMovieForm.get('release')?.errors && !searchMovieForm.get('release')?.pristine">
+                <div [hidden]="!searchMovieForm.get('release')?.errors?.['required']">The year of release is
+                    required.</div>
+                <div [hidden]="!searchMovieForm.get('release')?.errors?.['dateInvalid']">{{searchMovieForm.get('release')?.errors?.['dateInvalid'].rules}}</div>
+            </div>
+        </label>
+    </div>
+    <div>
+        <label for="file">File
+            <select formControlName="file">
+                <option *ngFor="let file of files" [ngValue]="file.id">{{file.name}}</option>
+            </select>
+        </label>
+    </div>
+
+
+
+
+    <button type="submit" (click)="patchFileValues()">Submit</button>
+</form>
