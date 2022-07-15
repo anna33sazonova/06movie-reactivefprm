@@ -29,7 +29,9 @@
     <div>
         <label for="file">File
             <select formControlName="file">
-                <option *ngFor="let file of files" [ngValue]="file.id">{{file.name}}</option>
+                <option>Full</option>
+                <option>Short</option> 
+                <!-- <option *ngFor="let file of files">{{file.name}}</option> -->
             </select>
         </label>
     </div>

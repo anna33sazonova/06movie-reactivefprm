@@ -46,10 +46,10 @@ export class SearchMovieComponent implements OnInit {
     this.patchFileValues()
   }
 
-  patchFileValues() {
+   patchFileValues() {
 
-    this.searchMovieForm.get('file')?.patchValue('Short');
-    console.log('patch')
-  }
+    this.searchMovieForm.get('file')?.patchValue("Short");
+  console.log('patch')
+   }
 
 }
